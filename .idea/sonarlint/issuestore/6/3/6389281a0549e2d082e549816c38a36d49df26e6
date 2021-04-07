@@ -1,0 +1,5 @@
+
+h	php:S1192"NDefine a constant instead of duplicating this literal "app.adminPath" 3 times.(¬¯éÃüÿÿÿÿ
+1	php:S1763"Remove this unreachable code.(Ì–Ús
+ª	php:S2681"•This statement will not be executed conditionally; only the first statement of this 2-statement block will be. The rest will execute unconditionally.(äÌÛ`
+Iphp:S121"0Add curly braces around the nested statement(s).(¬¯éÃüÿÿÿÿ

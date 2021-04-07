@@ -1,0 +1,48 @@
+
+o	php:S3776±"TRefactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed.(ËĞ×ƒıÿÿÿÿ
+Ephp:S121¥"0Add curly braces around the nested statement(s).(ÜÙÓ¾
+±	php:S2681¦"•This statement will not be executed conditionally; only the first statement of this 2-statement block will be. The rest will execute unconditionally.(ö¬ó€ûÿÿÿÿ
+a	php:S1192T"LDefine a constant instead of duplicating this literal "Y-m-d H:i:s" 3 times.(›ºÊÎ
+Iphp:S121d"0Add curly braces around the nested statement(s).(„¶áìøÿÿÿÿ
+s	php:S1488Â"]Immediately return this expression instead of assigning it to the temporary variable "$html".(ãäÆ…
+S	php:S1788Ğ"=Move arguments "$regID" after arguments without default value(×È­
+Iphp:S121^"0Add curly braces around the nested statement(s).(½ÿ»Îıÿÿÿÿ
+D	php:S1862b"*This branch duplicates the one on line 96.(£‚½“ÿÿÿÿÿ
+j	php:S1142±"OReduce the number of returns of this function 5, down to the maximum allowed 3.(ËĞ×ƒıÿÿÿÿ
+Iphp:S121P"0Add curly braces around the nested statement(s).(Ô¾Ñøÿÿÿÿ
+Iphp:S121`"0Add curly braces around the nested statement(s).(£‚½“ÿÿÿÿÿ
+j	php:S3776¶"TRefactor this function to reduce its Cognitive Complexity from 21 to the 15 allowed.(Ÿµ«
+p	php:S3923E"[Remove this conditional structure or edit its code blocks so that they're not all the same.(œ¿Æˆ
+`	php:S1126»"EReplace this "if-then-else" statement by a single "return" statement.(©ê±•ÿÿÿÿÿ
+x	php:S1488’"]Immediately return this expression instead of assigning it to the temporary variable "$html".(à»î»şÿÿÿÿ
+Jphp:S121Ñ"0Add curly braces around the nested statement(s).(•Ó†ÿûÿÿÿÿ
+a	php:S1192"GDefine a constant instead of duplicating this literal "&page=" 3 times.(İÉìúÿÿÿÿ
+Iphp:S121\"0Add curly braces around the nested statement(s).(°È°¯ùÿÿÿÿ
+s	php:S1488¾"]Immediately return this expression instead of assigning it to the temporary variable "$kode".(Òç—Õ
+d	php:S1192"JDefine a constant instead of duplicating this literal "&refresh=" 3 times.(İÉìúÿÿÿÿ
+d	php:S1192"JDefine a constant instead of duplicating this literal "?refresh=" 3 times.(İÉìúÿÿÿÿ
+m	php:S4144è"RUpdate this method so that its implementation is not identical to "g" on line 732.(Ó‚‘ïùÿÿÿÿ
+^	php:S1192Ç"HDefine a constant instead of duplicating this literal "IFNULL(" 4 times.(’ã•
+{	php:S1488—"`Immediately return this expression instead of assigning it to the temporary variable "$convert".(ºÔìÇùÿÿÿÿ
+o	php:S3776á"TRefactor this function to reduce its Cognitive Complexity from 24 to the 15 allowed.(Ÿ…‡¡ÿÿÿÿÿ
+>php:S108")Either remove or fill this block of code.(Öñëû
+Iphp:S121K"0Add curly braces around the nested statement(s).(Ğšöÿıÿÿÿÿ
+g	php:S1192²"LDefine a constant instead of duplicating this literal "Filter Team" 3 times.(Úìåşÿÿÿÿ
+~php:S930—"d"getMenu" expects 0 arguments, but 1 was provided. Reduce provided arguments or add more parameters.(Ûÿ¶úÿÿÿÿ
+i	php:S1192¶"NDefine a constant instead of duplicating this literal "app.adminPath" 4 times.(»ß®ıÿÿÿÿ
+u	php:S1488è"_Immediately return this expression instead of assigning it to the temporary variable "$jumlah".( ‘Éğ
+t	php:S1488ğ"^Immediately return this expression instead of assigning it to the temporary variable "$waktu".(˜·åö
+o	php:S3776–"TRefactor this function to reduce its Cognitive Complexity from 27 to the 15 allowed.(ªûÿæøÿÿÿÿ
+x	php:S1488Â"]Immediately return this expression instead of assigning it to the temporary variable "$kode".(¢Óöûşÿÿÿÿ
+3	php:S1763ñ"Remove this unreachable code.(›ûä·
+a	php:S1192"GDefine a constant instead of duplicating this literal "?page=" 3 times.(İÉìúÿÿÿÿ
+t	php:S1488È"^Immediately return this expression instead of assigning it to the temporary variable "$hasil".(’çì±
+s	php:S1488¸"]Immediately return this expression instead of assigning it to the temporary variable "$html".(ˆ²İ¿
+Iphp:S121b"0Add curly braces around the nested statement(s).(£‚½“ÿÿÿÿÿ
+_	php:S1192Ç"IDefine a constant instead of duplicating this literal ","") as " 4 times.(’ã•
+x	php:S1488Ì"]Immediately return this expression instead of assigning it to the temporary variable "$html".(êĞıÏÿÿÿÿÿ
+V	php:S4830é"@Enable server certificate validation on this SSL/TLS connection.(À˜¼
+=	php:S1125ğ"(Remove the literal "TRUE" boolean value.(çÀ‰6
+f	php:S1192ø"PDefine a constant instead of duplicating this literal "menu.deleted_at" 3 times.(¦ş­í
+t	php:S1488"^Immediately return this expression instead of assigning it to the temporary variable "$epoch".(©»âÚ
+U	php:S5527è"?Enable server hostname verification on this SSL/TLS connection.(ÿÜ‘À
