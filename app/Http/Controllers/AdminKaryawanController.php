@@ -66,7 +66,6 @@ class AdminKaryawanController extends Controller
             'alamat'=>'required|string|max:150',
             'id_provinsi'=>'required|exists:provinsi,id',            
             'id_kota_reguler'=>'required|exists:kota_reguler,id',
-            'id_devisi'=>'required|exists:devisi,id',
             'keterangan'=>'string'                    
             ]);
 
@@ -93,8 +92,7 @@ class AdminKaryawanController extends Controller
             'email'=>p('email'),
             'alamat'=>p('alamat'),
             'id_provinsi'=>p('id_provinsi'),            
-            'id_kota_reguler'=>p('id_kota_reguler'),   
-            'id_devisi'=>p('id_devisi'),   
+            'id_kota_reguler'=>p('id_kota_reguler'),
             'keterangan'=>p('keterangan'),
             'status'=>1,         
             'created_at'=>now()
@@ -119,7 +117,6 @@ class AdminKaryawanController extends Controller
             'alamat'=>'required|string|max:150',
             'id_provinsi'=>'required|exists:provinsi,id',            
             'id_kota_reguler'=>'required|exists:kota_reguler,id',
-            'id_devisi'=>'required|exists:devisi,id',
             'keterangan'=>'string'                    
             ]);
 
@@ -135,8 +132,7 @@ class AdminKaryawanController extends Controller
             'email'=>p('email'),
             'alamat'=>p('alamat'),
             'id_provinsi'=>p('id_provinsi'),            
-            'id_kota_reguler'=>p('id_kota_reguler'),  
-            'id_devisi'=>p('id_devisi'),   
+            'id_kota_reguler'=>p('id_kota_reguler'),
             'keterangan'=>p('keterangan'),         
             'updated_at'=>now()
             ];
