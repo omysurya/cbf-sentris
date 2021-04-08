@@ -8,4 +8,5 @@
 /storage/app/public/*
 .env
 /.phpintel
+/.idea
 /vendor
