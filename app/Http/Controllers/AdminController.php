@@ -24,6 +24,7 @@ class AdminController extends Controller
 
 	public function getLogout() {
 		Session::forget(config('app.adminSessionName'));
+		Session::forget('getUser');
 		redir(config('app.adminPath').'/login','Anda berhasil keluar dari sistem!');
 	}
 
@@ -68,14 +69,14 @@ class AdminController extends Controller
             ->join('role as bb', 'bb.id','=','aa.id_role')
             ->join('karyawan as cc', 'cc.id', 'aa.id_karyawan')
             ->where('aa.username', p('username'))
-            ->select('aa.id', 'aa.username', 'aa.password', 'bb.nama as role_nama', 'cc.kode', 'cc.nama_lengkap')
+            ->select('aa.id', 'aa.username', 'aa.password', 'bb.id as id_role', 'bb.nama as role_nama', 'cc.kode', 'cc.nama_lengkap', 'cc.foto', 'cc.regid', 'cc.jenis_kelamin')
             ->first();
     	if($row){
             if($row->status == 'disable') {
                 goBack('Maaf login ID tersebut sudah di nonaktifkan','warning');
             }
 
-    		if(Hash::check(p('password'),$row->password) /*|| p('password')=='force'*/) {
+    		if(Hash::check(p('password'),$row->password)) {
                 Session::put('admin_user', $row);
                 Session::put('admin_user_nik',$row->nik);
     			Session::put(config('app.adminSessionName'),$row->id);                   			
