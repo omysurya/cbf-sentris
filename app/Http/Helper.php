@@ -270,7 +270,6 @@ if(!function_exists('getMenu')) {
                 $row->child = [];
             }
         }
-
         return $result;
 	}
 }
@@ -799,7 +798,7 @@ if(!function_exists('getUserNik')) {
     function getUserNik() { 
         return Session::get('admin_user_nik')?:false;
     }
-} 
+}
 
 function getUserSession() {
     return Session::get('admin_user');
@@ -858,25 +857,12 @@ if(!function_exists('getUserIds')) {
  * Get Admin Data
  * 
  * @return object
+ * Penggunaan Session untuk meringankan query load time
  */
 if(!function_exists('getUser')) {
     function getUser() {
         if(getUserId()) {
-            $row = DB::table('user');
-            $row->join('role','role.id','=','user.id_role');
-            $row->join('karyawan','karyawan.id','=','user.id_karyawan');
-            $row->select(
-                'user.*',
-                DB::raw("IFNULL(karyawan.foto,'css/profile.png') as foto"),
-                'karyawan.nama_lengkap',
-                'karyawan.no_telp',
-                'karyawan.alamat',
-                'karyawan.kode',
-                'karyawan.keterangan',
-                'karyawan.email',
-                'role.nama as role_nama');
-            $row->where('user.id',getUserId());
-            return $row->first();
+            return getUserSession(); //Session::get('admin_user');
         }else{
             return false;
         }
@@ -1142,5 +1128,13 @@ function dateConvert($date,$format){
 if(!function_exists('str_limit')){
     function str_limit($text, $limit){
         return Str::limit($text, $limit);
+    }
+}
+
+//after upgarde from 5.4 to 6.0
+//str_random has remove
+if(!function_exists('str_random')){
+    function str_random($limit){
+        return Str::random($limit);
     }
 }

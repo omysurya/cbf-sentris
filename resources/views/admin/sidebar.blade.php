@@ -10,7 +10,7 @@
             $url = (strpos($url,'#')!==FALSE)?'#':$url;
             $active = (Request::is($url.'*'))?"active":"";
             $isTreeview = (count($m->child))?"treeview":"";
-            if(getPermission($m->module_path,'can_view')==false) continue;            
+            if(getPermission($m->module_path,'can_view')==false) continue;
           @endphp
           <li class="{{$isTreeview}} {{$active}}">
             <a href="{{url($url)}}"><i class="{{$m->icon}}"></i> {{$m->nama}}

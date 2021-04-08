@@ -11,7 +11,7 @@
  Target Server Version : 100137
  File Encoding         : 65001
 
- Date: 07/04/2021 10:41:35
+ Date: 08/04/2021 09:23:41
 */
 
 SET NAMES utf8mb4;
@@ -28,6 +28,10 @@ CREATE TABLE `app_sessions`  (
   `value` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of app_sessions
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for berita
@@ -122,6 +126,10 @@ CREATE TABLE `kalendar_event`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of kalendar_event
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for kalendar_libur
 -- ----------------------------
 DROP TABLE IF EXISTS `kalendar_libur`;
@@ -135,6 +143,10 @@ CREATE TABLE `kalendar_libur`  (
   `keterangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of kalendar_libur
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for karyawan
@@ -155,19 +167,18 @@ CREATE TABLE `karyawan`  (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `id_provinsi` int(11) NULL DEFAULT NULL,
-  `id_kota` int(11) NULL DEFAULT NULL,
   `id_kota_reguler` int(11) NOT NULL,
-  `id_devisi` int(11) NOT NULL,
   `keterangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `regid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `status` tinyint(2) NULL DEFAULT NULL COMMENT 'Status Karyawan 1=Aktif, 0=Sudah keluar',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3428 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3429 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of karyawan
 -- ----------------------------
-INSERT INTO `karyawan` VALUES (3427, NULL, NULL, NULL, '00000', 'css/profile.png', 'Super Administrator', NULL, NULL, NULL, '0', 'matrislab@example.com', 'Jakarta', NULL, NULL, 0, 0, NULL, NULL, 1);
+INSERT INTO `karyawan` VALUES (3427, NULL, NULL, NULL, '00000', 'css/profile.png', 'Super Administrator', NULL, NULL, NULL, '0', 'matrislab@example.com', 'Jakarta', NULL, 0, NULL, NULL, 1);
+INSERT INTO `karyawan` VALUES (3428, '2021-04-08 08:49:10', NULL, NULL, '2021001', 'uploads/2021-04/fd0d4bd7a9ed37cec6e1e8323c3d14de.png', 'Staff Admin', 'Laki-laki', 'Kuningan', '2021-04-26', '32323', 'staff@phs.com', 'Jakarta', 31, 3173, '-', NULL, 1);
 
 -- ----------------------------
 -- Table structure for kota_reguler
@@ -734,6 +745,10 @@ CREATE TABLE `log`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of log
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for menu
 -- ----------------------------
 DROP TABLE IF EXISTS `menu`;
@@ -780,6 +795,10 @@ CREATE TABLE `migrations`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of migrations
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for permission
 -- ----------------------------
 DROP TABLE IF EXISTS `permission`;
@@ -793,6 +812,10 @@ CREATE TABLE `permission`  (
   `can_delete` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of permission
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for provinsi
@@ -863,6 +886,10 @@ CREATE TABLE `referensi`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of referensi
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for role
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
@@ -874,12 +901,13 @@ CREATE TABLE `role`  (
   `nama` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `config` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
 INSERT INTO `role` VALUES (1, '2017-05-13 19:09:58', '2021-04-07 10:35:13', NULL, 'SUPERADMIN', 'a:14:{s:10:\"dashboard#\";a:1:{s:8:\"can_view\";s:1:\"1\";}s:14:\"dashboard/info\";a:1:{s:8:\"can_view\";s:1:\"1\";}s:7:\"master#\";a:1:{s:8:\"can_view\";s:1:\"1\";}s:13:\"masterberita#\";a:1:{s:8:\"can_view\";s:1:\"1\";}s:6:\"berita\";a:5:{s:8:\"can_view\";s:1:\"1\";s:10:\"can_create\";s:1:\"1\";s:8:\"can_read\";s:1:\"1\";s:10:\"can_update\";s:1:\"1\";s:10:\"can_delete\";s:1:\"1\";}s:15:\"kategori-berita\";a:5:{s:8:\"can_view\";s:1:\"1\";s:10:\"can_create\";s:1:\"1\";s:8:\"can_read\";s:1:\"1\";s:10:\"can_update\";s:1:\"1\";s:10:\"can_delete\";s:1:\"1\";}s:15:\"masterkaryawan#\";a:1:{s:8:\"can_view\";s:1:\"1\";}s:8:\"karyawan\";a:5:{s:8:\"can_view\";s:1:\"1\";s:10:\"can_create\";s:1:\"1\";s:8:\"can_read\";s:1:\"1\";s:10:\"can_update\";s:1:\"1\";s:10:\"can_delete\";s:1:\"1\";}s:4:\"user\";a:5:{s:8:\"can_view\";s:1:\"1\";s:10:\"can_create\";s:1:\"1\";s:8:\"can_read\";s:1:\"1\";s:10:\"can_update\";s:1:\"1\";s:10:\"can_delete\";s:1:\"1\";}s:4:\"role\";a:5:{s:8:\"can_view\";s:1:\"1\";s:10:\"can_create\";s:1:\"1\";s:8:\"can_read\";s:1:\"1\";s:10:\"can_update\";s:1:\"1\";s:10:\"can_delete\";s:1:\"1\";}s:14:\"kalendar-libur\";a:5:{s:8:\"can_view\";s:1:\"1\";s:10:\"can_create\";s:1:\"1\";s:8:\"can_read\";s:1:\"1\";s:10:\"can_update\";s:1:\"1\";s:10:\"can_delete\";s:1:\"1\";}s:8:\"wilayah#\";a:1:{s:8:\"can_view\";s:1:\"1\";}s:8:\"provinsi\";a:5:{s:8:\"can_view\";s:1:\"1\";s:10:\"can_create\";s:1:\"1\";s:8:\"can_read\";s:1:\"1\";s:10:\"can_update\";s:1:\"1\";s:10:\"can_delete\";s:1:\"1\";}s:12:\"reguler-kota\";a:5:{s:8:\"can_view\";s:1:\"1\";s:10:\"can_create\";s:1:\"1\";s:8:\"can_read\";s:1:\"1\";s:10:\"can_update\";s:1:\"1\";s:10:\"can_delete\";s:1:\"1\";}}');
+INSERT INTO `role` VALUES (2, '2021-04-08 08:49:50', '2021-04-08 08:50:38', NULL, 'STAFF', 'a:4:{s:10:\"dashboard#\";a:1:{s:8:\"can_view\";s:1:\"1\";}s:14:\"dashboard/info\";a:1:{s:8:\"can_view\";s:1:\"1\";}s:13:\"masterberita#\";a:1:{s:8:\"can_view\";s:1:\"1\";}s:6:\"berita\";a:5:{s:8:\"can_view\";s:1:\"1\";s:10:\"can_create\";s:1:\"1\";s:8:\"can_read\";s:1:\"1\";s:10:\"can_update\";s:1:\"1\";s:10:\"can_delete\";s:1:\"1\";}}');
 
 -- ----------------------------
 -- Table structure for setting
@@ -953,12 +981,13 @@ CREATE TABLE `user`  (
   `is_mr_satelite` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id_karyawan`(`id_karyawan`, `id_provinsi`, `id_kota`, `id_teritorial`, `id_role`, `id_area`, `id_region`, `id_devisi`, `status`, `is_online`, `id_atasan_am`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1607 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1608 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1606, '2017-12-04 01:20:48', '2018-07-03 02:01:44', NULL, 3427, '00.000A', 'admin', '$2y$10$1HzrDjnyL4e6JlKGs4e/2.3H3ETYO8bCvgUSvsRDIqPeSqdWTbY56', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'enable', 0, NULL, '0.0.45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5994, 0);
+INSERT INTO `user` VALUES (1607, '2021-04-08 08:51:46', NULL, NULL, 3428, '20.21001A', '20210011', '$2y$10$DNO1PJq0cXP8VkwRXi6iIud/wlaYi10Ztw8yhUkcbUt9TNb/CDh8O', NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, 'enable', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 -- ----------------------------
 -- Table structure for versi_app
@@ -979,5 +1008,9 @@ CREATE TABLE `versi_app`  (
   `nama_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of versi_app
+-- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;
