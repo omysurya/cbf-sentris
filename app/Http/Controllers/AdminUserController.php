@@ -171,7 +171,7 @@ class AdminUserController extends Controller
         if(p('password')) {
             $a['password'] = \Hash::make(p('password'));
         }
-        BD::table('user')->insert($a);            
+        DB::table('user')->insert($a);
 
         goAction('AdminUserController@getIndex','Berhasil menambah data!');
     }
