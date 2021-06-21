@@ -12,8 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-
-
+        /*
         $id_provinsi = DB::table('provinsi')->insertGetId(['nama'=>'Jawa Tengah']);
         $id_kota = DB::table('kota')->insertGetId(['nama'=>'Semarang','id_provinsi'=>$id_provinsi]);
 
@@ -44,5 +43,6 @@ class DatabaseSeeder extends Seeder
         	'password'=>Hash::make('123456'),
         	'status'=>'enable'
         	]);
+        */
     }
 }

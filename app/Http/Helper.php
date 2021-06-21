@@ -240,37 +240,43 @@ function sendFCM($regID=[],$data){
     curl_close($ch);    
     return $chresult;
 }
-
+//Improve menu using session for increase perfomance
+//2021-04-09
 if(!function_exists('getMenu')) {
 	function getMenu() {
-		$result = DB::table('menu');         
-        $result->where('parent_menu_id',0);          
-        $result->whereNull('menu.deleted_at');
-    	$result->orderby('sorting','asc');
-    	$result = $result->get(); 
-        foreach($result as &$row) {
-            $child = DB::table('menu')
-            ->where('parent_menu_id',$row->id)
-            ->whereNull('menu.deleted_at')
-            ->orderby('sorting','asc')->get();
-            if($child) {                
-                foreach($child as &$crow) {
-                    $child2 = DB::table('menu')
-                    ->where('parent_menu_id',$crow->id)
+        if(!Session('menuSession')){
+            $result = DB::table('menu');
+            $result->where('parent_menu_id',0);
+            $result->whereNull('menu.deleted_at');
+            $result->orderby('sorting','asc');
+            $result = $result->get();
+            foreach($result as &$row) {
+                $child = DB::table('menu')
+                    ->where('parent_menu_id',$row->id)
                     ->whereNull('menu.deleted_at')
                     ->orderby('sorting','asc')->get();
-                    if($child2) {
-                        $crow->child = $child2;
-                    }else{
-                        $crow->child = [];
+                if($child) {
+                    foreach($child as &$crow) {
+                        $child2 = DB::table('menu')
+                            ->where('parent_menu_id',$crow->id)
+                            ->whereNull('menu.deleted_at')
+                            ->orderby('sorting','asc')->get();
+                        if($child2) {
+                            $crow->child = $child2;
+                        }else{
+                            $crow->child = [];
+                        }
                     }
+                    $row->child = $child;
+                }else{
+                    $row->child = [];
                 }
-                $row->child = $child;
-            }else{
-                $row->child = [];
             }
+            $menuSession = Session(['menuSession', $result]);
+        }else{
+            $menuSession = Session('menuSession');
         }
-        return $result;
+        return $menuSession;
 	}
 }
 if(!function_exists('comboMenu')) {
@@ -428,11 +434,18 @@ if(!function_exists('sendEmail')) {
  * 
  * @return boolean
  */
+//Improve for fast loading sql
+//2021-04-09
 if(!function_exists('getPermission')) {	
 	function getPermission($module=NULL,$type='can_view',$roleID=NULL) {
 		$module = ($module)?:Request::segment(2);
 		@$roleID = ($roleID)?:getUser()->id_role;
-		$row = first('role',['id'=>$roleID]);
+		if(!Session('roleSessionId')){
+            $sessionRow = first('role',['id'=>$roleID]);
+            $row = Session(['roleSessionId', $sessionRow]);
+        }else{
+		    $row = Session('roleSessionId');
+        }
 		if($row) { 
 			$config = $row->config;
 			if($config && @unserialize($config)) {
@@ -859,10 +872,12 @@ if(!function_exists('getUserIds')) {
  * @return object
  * Penggunaan Session untuk meringankan query load time
  */
+//improve for fast loading using session
+//2021-04-09
 if(!function_exists('getUser')) {
     function getUser() {
         if(getUserId()) {
-            return getUserSession(); //Session::get('admin_user');
+            return getUserSession();
         }else{
             return false;
         }
