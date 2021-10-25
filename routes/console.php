@@ -996,4 +996,4 @@ Artisan::command('install', function (){
 
     SET FOREIGN_KEY_CHECKS = 1;
     ");
-})->describe('First install SenTris CBF for your project, for QnA please follow me on github.com/cbf-sentris');
+})->describe('install SenTris CBF for your project, for QnA please follow me on github.com/cbf-sentris');
