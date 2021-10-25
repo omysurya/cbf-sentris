@@ -158,21 +158,21 @@ function dayCount($tanggalAwal,$tanggalAkhir) {
     return $date2->diff($date1)->format("%a");
 }
 
-function getSession($sessionID) {
-    $row = first('app_sessions',['name'=>$sessionID]);
+function getSession($token_id) {
+    $row = first('app_sessions',['name'=>$token_id]);
     if($row) {
         return $row->value;
     }else{
         return false;
     }
 }
-function putSession($sessionID,$value) {
+function putSession($token_id,$value) {
 
     DB::table('app_sessions')->whereRaw("created_at > date_sub(now(), interval 1 month)")->delete();
 
     DB::table('app_sessions')->insert([
         'created_at'=>now(),
-        'name'=>$sessionID,
+        'name'=>$token_id,
         'value'=>$value
     ]);
     return true;
@@ -244,39 +244,7 @@ function sendFCM($regID=[],$data){
 //2021-04-09
 if(!function_exists('getMenu')) {
 	function getMenu() {
-        if(!session()->has('menuSession')){
-            $results = DB::table('menu')
-            ->where('parent_menu_id',0)
-            ->whereNull('menu.deleted_at')
-            ->orderby('sorting','asc');
-            $result = $results->get();
-            foreach($result as $row) {
-                $child = DB::table('menu')
-                    ->where('parent_menu_id',$row->id)
-                    ->whereNull('menu.deleted_at')
-                    ->orderby('sorting','asc')->get();
-                if($child) {
-                    foreach($child as &$crow) {
-                        $child2 = DB::table('menu')
-                            ->where('parent_menu_id',$crow->id)
-                            ->whereNull('menu.deleted_at')
-                            ->orderby('sorting','asc')->get();
-                        if($child2) {
-                            $crow->child = $child2;
-                        }else{
-                            $crow->child = [];
-                        }
-                    }
-                    $row->child = $child;
-                }else{
-                    $row->child = [];
-                }
-            }
-            $menuSession = session(['menuSession' => $result]);
-        }else{
-            $menuSession = session('menuSession');
-        }
-        return $menuSession;
+        return Session::get('admin_menu');
 	}
 }
 if(!function_exists('comboMenu')) {
@@ -439,13 +407,7 @@ if(!function_exists('sendEmail')) {
 if(!function_exists('getPermission')) {
 	function getPermission($module=NULL,$type='can_view',$roleID=NULL) {
 		$module = ($module)?:Request::segment(2);
-		$roleID = ($roleID)?:getRoleId();
-		if(!session()->has('roleSessionId')){
-            $sessionRow = first('role',['id'=>$roleID]);
-            $row = session(['roleSessionId' => $sessionRow]);
-        }else{
-		    $row = session('roleSessionId');
-        }
+        $row = Session::get('admin_role');
 		if($row) {
 			$config = $row->config;
 			if($config && unserialize($config)) {
@@ -878,12 +840,7 @@ if(!function_exists('getUserIds')) {
 if(!function_exists('getUser')) {
     function getUser() {
         if(getUserId()) {
-            if(!session()->has('getUserSession')){
-                $getUserSession = session(['getUserSession' => getUserSession()]);
-            }else{
-                $getUserSession = session('getUserSession');
-            }
-            return $getUserSession;
+            return getUserSession();
         }else{
             return false;
         }
