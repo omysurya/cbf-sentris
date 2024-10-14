@@ -69,7 +69,7 @@ class AdminController extends Controller
             ->join('role as bb', 'bb.id','=','aa.id_role')
             ->join('karyawan as cc', 'cc.id', 'aa.id_karyawan')
             ->where('aa.username', p('username'))
-            ->select('aa.id', 'aa.username', 'aa.password', 'bb.id as id_role', 'bb.nama as role_nama', 'cc.kode', 'cc.nama_lengkap', 'cc.foto', 'cc.regid', 'cc.jenis_kelamin')
+            ->select('aa.id', 'aa.username', 'aa.password', 'bb.id as id_role', 'bb.nama as role_nama', 'cc.kode', 'cc.nama_lengkap', 'cc.foto', 'cc.regid', 'cc.jenis_kelamin', 'aa.status', 'cc.kode as nik')
             ->first();
     	if($row){
             if($row->status == 'disable') {
